@@ -67,7 +67,7 @@ function setupTeddyBubblesFill() {
 
   const startedAt = performance.now();
   const durationMs = 180_000;
-  const maxBubbles = 1200;
+  const maxBubbles = 1200 * 3;
 
   const getMouthPointInOverlay = () => {
     const mouthRect = mouth.getBoundingClientRect();
@@ -98,7 +98,7 @@ function setupTeddyBubblesFill() {
     const hue = hueChoices[Math.floor(Math.random() * hueChoices.length)];
     circle.style.setProperty("--hue", `${hue}deg`);
 
-    const radius = 6 + Math.random() * 18;
+    const radius = (6 + Math.random() * 18) * 2;
     const jitterX = -10 + Math.random() * 20;
     const jitterY = -6 + Math.random() * 12;
 
@@ -131,7 +131,7 @@ function setupTeddyBubblesFill() {
     const delay = Math.round(maxDelay - (maxDelay - minDelay) * t);
 
     // Burst a little when we're further in, to help “fill the screen”.
-    const perTick = t < 0.25 ? 1 : t < 0.7 ? 2 : 3;
+    const perTick = (t < 0.25 ? 1 : t < 0.7 ? 2 : 3) * 3;
     for (let i = 0; i < perTick; i += 1) spawnBubble();
 
     if (elapsed < durationMs) {
@@ -142,7 +142,13 @@ function setupTeddyBubblesFill() {
     // After 3 minutes, keep a gentle steady stream so it stays filled.
     window.setInterval(() => {
       spawnBubble();
-      if (Math.random() > 0.55) spawnBubble();
+      spawnBubble();
+      spawnBubble();
+      if (Math.random() > 0.55) {
+        spawnBubble();
+        spawnBubble();
+        spawnBubble();
+      }
     }, 260);
   };
 
