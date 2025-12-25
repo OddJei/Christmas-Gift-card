@@ -293,11 +293,16 @@ body::after {
 @media (max-width: 768px) {
   .page {
     /* More room for the card on phones */
-    padding: 12px;
+    padding: 8px;
   }
 
   .gift {
     width: 100%;
+    padding: 6px 0;
+  }
+
+  .gift__svgCard {
+    width: calc(100vw - 16px);
   }
 
   .gift__imageWrap {
@@ -321,9 +326,17 @@ body::after {
   .gift__messageWrap {
     padding: 12px;
   }
+
+  .teddy__svg {
+    width: min(200px, 60vw);
+  }
 }
 
 @media (max-width: 420px) {
+  .page {
+    padding: 6px;
+  }
+
   .gift__imageWrap {
     width: calc(100vw - 16px);
     border-radius: 12px;
@@ -340,6 +353,14 @@ body::after {
 
   .gift__messageWrap {
     padding: 10px;
+  }
+
+  .gift__svgCard {
+    width: calc(100vw - 12px);
+  }
+
+  .teddy__svg {
+    width: min(180px, 55vw);
   }
 }
 
