@@ -99,14 +99,16 @@ function setupTeddyBubblesFill() {
     circle.style.setProperty("--hue", `${hue}deg`);
 
     const radius = (6 + Math.random() * 18) * 2;
-    const jitterX = -10 + Math.random() * 20;
-    const jitterY = -6 + Math.random() * 12;
+    // Spread bubbles out a bit at the source so they look less clustered.
+    const jitterX = -35 + Math.random() * 70;
+    const jitterY = -20 + Math.random() * 40;
 
     circle.setAttribute("cx", String(Math.max(0, Math.min(width, startX + jitterX))));
     circle.setAttribute("cy", String(Math.max(0, Math.min(height, startY + jitterY))));
     circle.setAttribute("r", String(radius));
 
-    const drift = -60 + Math.random() * 120;
+    // Wider sideways drift so bubbles don't rise in tight columns.
+    const drift = -160 + Math.random() * 320;
     const rise = height + 140;
     const dur = 8 + Math.random() * 10;
     const alpha = 0.28 + Math.random() * 0.34;
